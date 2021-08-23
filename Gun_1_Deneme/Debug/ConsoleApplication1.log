@@ -1,0 +1,4 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\oalia\Desktop\work\Gun_1_Deneme\ConsoleApplication1.cpp(115,12): warning C4244: 'bağımsız değişken': 'time_t' - 'unsigned int' dönüşümü; veri kaybı olabilir
+C:\Users\oalia\Desktop\work\Gun_1_Deneme\ConsoleApplication1.cpp(198,12): warning C4244: 'bağımsız değişken': 'time_t' - 'unsigned int' dönüşümü; veri kaybı olabilir
+  ConsoleApplication1.vcxproj -> C:\Users\oalia\Desktop\work\Gun_1_Deneme\Debug\ConsoleApplication1.exe
