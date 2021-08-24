@@ -1,0 +1,4 @@
+﻿  basitbankauygulamasi.cpp
+C:\Users\oalia\Desktop\Gun_2\hedef1\BasitBankaUygulamasi\basitbankauygulamasi\basitbankauygulamasi.cpp(115,46): warning C4244: '+=': 'double' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\oalia\Desktop\Gun_2\hedef1\BasitBankaUygulamasi\basitbankauygulamasi\basitbankauygulamasi.cpp(128,45): warning C4244: '-=': 'double' - 'int' dönüşümü; veri kaybı olabilir
+  basitbankauygulamasi.vcxproj -> C:\Users\oalia\Desktop\Gun_2\hedef1\BasitBankaUygulamasi\basitbankauygulamasi\Debug\basitbankauygulamasi.exe
