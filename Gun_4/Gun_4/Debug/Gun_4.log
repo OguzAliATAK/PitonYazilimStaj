@@ -1,0 +1,4 @@
+﻿  Gun_4.cpp
+C:\Users\oalia\Desktop\Gun_4\Gun_4\Gun_4.cpp(9,21): warning C4305: 'başlatılıyor': '__int64' iken 'int' olarak kesildi
+C:\Users\oalia\Desktop\Gun_4\Gun_4\Gun_4.cpp(9,11): warning C4309: 'başlatılıyor': sabit değer kesildi
+  Gun_4.vcxproj -> C:\Users\oalia\Desktop\Gun_4\Gun_4\Debug\Gun_4.exe
