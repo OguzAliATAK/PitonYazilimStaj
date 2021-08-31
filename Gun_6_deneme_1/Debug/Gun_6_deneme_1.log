@@ -1,0 +1,6 @@
+﻿  Gun_6_deneme_1.cpp
+C:\Users\oalia\Desktop\staj\Gun_6\Gun_6_deneme_1\Gun_6_deneme_1\Hesap.h(45,20): warning C4244: '=': 'double' - 'int' dönüşümü; veri kaybı olabilir
+  Hesap.cpp
+C:\Users\oalia\Desktop\staj\Gun_6\Gun_6_deneme_1\Gun_6_deneme_1\Hesap.h(45,20): warning C4244: '=': 'double' - 'int' dönüşümü; veri kaybı olabilir
+  Kod Üretiliyor...
+  Gun_6_deneme_1.vcxproj -> C:\Users\oalia\Desktop\staj\Gun_6\Gun_6_deneme_1\Gun_6_deneme_1\Debug\Gun_6_deneme_1.exe
