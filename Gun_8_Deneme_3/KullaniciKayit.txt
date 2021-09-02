@@ -1,0 +1,14 @@
+Oguz
+sifre123
+5000
+3
+
+Ahmet
+1234
+5550
+4
+
+Selin
+sifre111
+10000
+5
