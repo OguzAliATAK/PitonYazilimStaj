@@ -1,0 +1,30 @@
+3 Para_yatir 5000
+3 Para_yatir 15000
+3 Para_yatir 15000
+3 Para_yatir 15
+3 Para_cek 6500
+3 Para_cek 6500
+3 Para_yatir 15000
+3 Para_yatir 1.5e+06
+3 Para_yatir 1.5e+06
+3 Para_cek 500000
+3 Para_cek 500000
+3 Para_cek 500000
+3 Para_cek 500000
+
+3 Para_cek 12555
+3 Para_cek 500000
+
+3 Para_cek 12555
+3 Para_cek 500000
+
+3 Para_cek 12555
+
+3 Para_cek 950000
+3 Para_cek 500000
+
+3 Para_cek 12555
+
+3 Para_cek 950000
+0 Para_cek 4500
+0 Para_cek 4500
