@@ -15,7 +15,7 @@ vector<string> islemdeger;
 vector<double> Para_deger;
 
 
-MusteriHesap::MusteriHesap(string isim, string soyad, string sifre,string banka_adi, int baslangic_para)
+MusteriHesap::MusteriHesap(string isim, string soyad, string sifre, string banka_adi, int baslangic_para)
 {
 	set_isim(isim);
 	set_soyad(soyad);
@@ -75,7 +75,7 @@ ostream& operator << (ostream& out, MusteriHesap& Hesap1) {
 		out << "Isim: " << Hesap1.get_isim() << endl;
 		out << "Soyad: " << Hesap1.get_soyad() << endl;
 		out << "Sifre: " << Hesap1.get_sifre() << endl;
-		out << "Bakiye: " << Hesap1.get_bakiye()  << " TL" << endl;
+		out << "Bakiye: " << Hesap1.get_bakiye() << " TL" << endl;
 		out << "Hesap No: " << Hesap1.get_HesapNo() << endl;
 	}
 	return out;
@@ -87,8 +87,8 @@ ifstream& operator >> (ifstream& in, MusteriHesap& Hesap1) {
 	int HesapNo;
 	double bakiye;
 
-	
-	in >> banka_adi >>isim >> soyad >> sifre;
+
+	in >> banka_adi >> isim >> soyad >> sifre;
 	in >> bakiye >> HesapNo;
 	Hesap1.set_banka_adi(banka_adi);
 	Hesap1.set_isim(isim);

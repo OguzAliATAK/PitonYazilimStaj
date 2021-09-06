@@ -13,7 +13,7 @@ private:
 	bool open = true;
 	int HesapNo = ++SuankiHesapNo;
 	double bakiye = 0;
-	string isim, soyad, sifre,banka_adi;
+	string isim, soyad, sifre, banka_adi;
 
 public:
 
@@ -25,7 +25,7 @@ public:
 
 
 	MusteriHesap() {}
-	MusteriHesap(string, string,string,string, int);
+	MusteriHesap(string, string, string, string, int);
 
 	void para_yatir(double);
 	void para_cek(double);

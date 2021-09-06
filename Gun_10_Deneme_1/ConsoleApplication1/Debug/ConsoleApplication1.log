@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Ara dizin (Debug\) başka bir projeden (ConsoleApplication1.vcxproj) paylaşılan dosyalar içeriyor. Bu, hatalı temizleme ve yeniden oluşturma davranışına neden olabilir.
+  clientq.cpp
+C:\Users\oalia\Desktop\staj\Gun_10\Gun_10_Denme_2\ConsoleApplication1\clientq.cpp(10,1): warning C4326: 'main' öğesinin dönüş türü 'int' olmalıdır, 'void' değil
+  ConsoleApplication1.vcxproj -> C:\Users\oalia\Desktop\staj\Gun_10\Gun_10_Denme_2\Debug\client.exe
