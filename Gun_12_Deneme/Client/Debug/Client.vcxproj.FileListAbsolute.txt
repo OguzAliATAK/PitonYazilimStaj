@@ -1,1 +1,1 @@
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Debug\Client.exe
+C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\x64\Debug\Client.exe

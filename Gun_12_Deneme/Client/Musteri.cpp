@@ -39,7 +39,7 @@ void Client1::soket_baslat()
 		WSACleanup();
 		return;
 	}
-
+	cout << "Server'a baglandi" << endl;
 }
 
 void Client1::soket_islem()
@@ -48,7 +48,8 @@ void Client1::soket_islem()
 	string kullanicigiris;
 	do
 	{
-		cout << ">";
+		
+		cout << " >";
 		cin >> kullanicigiris;
 		if (kullanicigiris.size() > 0)
 		{
