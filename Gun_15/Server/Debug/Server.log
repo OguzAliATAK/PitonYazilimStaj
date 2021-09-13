@@ -1,0 +1,4 @@
+﻿  KullaniciVeri.cpp
+C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Server\KullaniciVeri.cpp(187,6): warning C4101: 'donus': yerel değişken başvurusu kaldırıldı
+C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Server\KullaniciVeri.cpp(115): warning C4715: 'operator<<': tüm denetim yolları değer döndürmez
+  Server.vcxproj -> C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Server\Debug\Server.exe
