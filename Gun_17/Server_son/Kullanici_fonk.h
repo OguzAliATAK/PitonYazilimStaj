@@ -15,10 +15,10 @@ private:
 	int HesapNo = ++SuankiHesapNo;
 	double bakiye = 0;
 	string isim, soyad, sifre, banka_adi;
-
 public:
 
-
+	string mesaj3 = "a";
+	double bakiye_deger = 0;
 	string isim_kontrol;
 	string sifre_kontrol;
 	int  HesapNo_kontrol;
@@ -63,6 +63,7 @@ public:
 		this->bakiye = bakiye;
 	}
 
+
 	string get_isim()
 	{
 		return isim;
@@ -88,7 +89,6 @@ public:
 		return HesapNo;
 	}
 
-	void Kullanici_kontrol();
 	void Veri_guncelle();
 	void Hesap_Kontrol(int, string);
 	void Admin_giris();
@@ -111,7 +111,7 @@ public:
 	friend ifstream& operator >> (ifstream& in, MusteriHesap& Hesap1);
 	friend ofstream& operator << (ofstream& out, MusteriHesap& Hesap1);
 
-	void vektor();
+	string mesaj2 = "22222";
 
 	string degerler;
 

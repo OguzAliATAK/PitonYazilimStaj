@@ -77,8 +77,10 @@ void baslat()
 
 		while (1)
 		{
+		b:
 			system("cls");
 			cout << "bekleniyor " << endl;
+			
 			//ZeroMemory(buf, 4096);
 			int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 
@@ -98,9 +100,8 @@ void baslat()
 			}
 			if (string(buf, 0, byteRecieved) == "1") // Kullanici girisi 
 			{
-				string str = "merhaba";
-				int verigonder = send(ClientSocket, str.c_str(), str.size() + 1, 0);
-
+			
+				
 				int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 				string alinan_hesapNo = string(buf, 0, byteRecieved);
 
@@ -109,14 +110,26 @@ void baslat()
 				deger >> x;
 				int byte_sifre = recv(ClientSocket, buf, 4096, 0);
 				string alinan_sifre = string(buf, 0, byte_sifre);
-				send(ClientSocket, buf, byte_sifre + 1, 0);
+				//send(ClientSocket, buf, byte_sifre + 1, 0);
 
 				hesap_islem.Hesap_Kontrol(x, alinan_sifre);
-
+				if (hesap_islem.mesaj3 == "1")
+				{
+					cout << "Dogru" << endl;
+					int mesajsinyali = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
+				}
+				else
+				{
+					cout << "Kullanici yanlis";
+					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
+					goto b;
+				}
+				cout << hesap_islem.mesaj3;
 				hesap_islem.Veri_guncelle();
-				recv(ClientSocket, buf, 4096, 0);
+				
 				do
 				{
+					recv(ClientSocket, buf, 4096, 0);
 					if (string(buf, 0, byteRecieved) == "1") // Para yatirma islemi
 					{
 						//	ZeroMemory(buf, 4096);
@@ -171,7 +184,7 @@ void baslat()
 						gonderilecek_hesap += 1;
 					}
 
-					recv(ClientSocket, buf, 4096, 0);
+					
 
 				} while (string(buf, 0, byteRecieved) != "4");
 

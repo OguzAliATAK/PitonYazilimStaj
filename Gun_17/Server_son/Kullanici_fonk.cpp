@@ -57,7 +57,9 @@ void MusteriHesap::para_yatir(int numara, double deger2)
 	}
 	else
 	{
+		
 		bakiye = Hesaplar[numara].get_bakiye();
+		
 		cout << "Hesabiniza " << deger2 << " TL yatirildi" << endl;
 		bakiye += deger2;
 		Hesaplar[numara].set_bakiye(bakiye);
@@ -200,8 +202,7 @@ void MusteriHesap::Hesap_Kontrol(int hesapumara, string kullanicisifre)
 {
 	bool kontrol = true;
 	int i;
-	string kullanici_kont = "nsadjd";
-	int asdasd = send(ClientSocket, kullanici_kont.c_str(), kullanici_kont.size() + 1, 0);
+	
 
 	for ( i = 0; i < Hesaplar.size(); i++)
 	{
@@ -209,14 +210,20 @@ void MusteriHesap::Hesap_Kontrol(int hesapumara, string kullanicisifre)
 		{
 			if (Hesaplar[i].get_sifre() == kullanicisifre)
 			{
-				cout << "Sifre : " << kullanicisifre << endl;
+				
 				cout << "Giris yapan kullanici : " << Hesaplar[i].get_isim() << " " << Hesaplar[i].get_soyad() << endl;
 				Veri_guncelle();
+				mesaj3 = "1";
+				kullanicisifre = mesaj3;
+				cout << kullanicisifre << endl;
+				int mesajsinyal = send(ClientSocket, kullanicisifre.c_str(), kullanicisifre.size() + 1, 0);
 				kontrol = false;
 			}
 			else
 			{
-				cout << "kullanici adi ve sifre yanlis" << endl;
+				cout << "Sifre yanlis" << endl;
+				mesaj3 = "0";
+
 			}
 			
 		}
