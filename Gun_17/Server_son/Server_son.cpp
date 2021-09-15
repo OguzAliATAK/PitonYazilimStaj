@@ -74,7 +74,8 @@ void baslat()
 
 		closesocket(listening);
 
-
+		string durum_mesaj = "Islem basarili";
+		string durum_mesaj_ngt = "Islem basarisiz";
 		while (1)
 		{
 		b:
@@ -116,10 +117,12 @@ void baslat()
 				if (hesap_islem.mesaj3 == "1")
 				{
 					cout << "Dogru" << endl;
+					int mesajsinyali1 = send(ClientSocket,durum_mesaj.c_str(),durum_mesaj.size() + 1, 0);
 					int mesajsinyali = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 				}
 				else
 				{
+					int mesajsinyali3 = send(ClientSocket, durum_mesaj_ngt.c_str(), durum_mesaj_ngt.size() + 1, 0);
 					cout << "Kullanici yanlis";
 					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 					goto b;
@@ -133,6 +136,7 @@ void baslat()
 					if (string(buf, 0, byteRecieved) == "1") // Para yatirma islemi
 					{
 						//	ZeroMemory(buf, 4096);
+					
 						int byte_yatirilan = recv(ClientSocket, buf, 4096, 0);
 						string degerpara = string(buf, 0, byte_yatirilan);
 						stringstream deger1(degerpara);
@@ -140,6 +144,7 @@ void baslat()
 						deger1 >> y;
 						x -= 1;
 						hesap_islem.para_yatir(x, y);
+
 						hesap_islem.vektor_ekle();
 						hesap_islem.Veri_guncelle();
 						x += 1;

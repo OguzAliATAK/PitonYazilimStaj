@@ -18,6 +18,7 @@ private:
 public:
 
 	string mesaj3 = "a";
+	string para_mesaj = "0";
 	double bakiye_deger = 0;
 	string isim_kontrol;
 	string sifre_kontrol;

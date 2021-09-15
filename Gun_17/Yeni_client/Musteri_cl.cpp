@@ -88,17 +88,18 @@ void Client1::soket_islem()
 					if (kullanicigiris == "1")
 					{
 						kullanici_girisi(); // kullanici girisi bekleniyor 
-
+						int islem_durum = recv(sock, buf, 4096, 0);
+						cout << string(buf, 0, islem_durum) << endl;
 						int gelen_sinyal = recv(sock, buf, 4096, 0);
+						
 						if (string(buf, 0, gelen_sinyal) != "1")
 						{
+						
 							cout << "Kullanici hatali" << endl;
 							cout << "Ana Menuye donuluyor " << endl;
 							Sleep(1500);
-							goto a;
-							
+							goto a;	
 						}
-					
 
 						Sleep(1500);
 						do
@@ -110,12 +111,11 @@ void Client1::soket_islem()
 							if (kullanicigiris == "1")
 							{
 								//ZeroMemory(buf, 4096);
-								
-								//int gelen_bakiye = recv(sock, buf, 4096, 0);
-								//cout << "bakiye : " << string(buf,0,gelen_bakiye) << endl;
+							
 								cout << "yatirmak istediginiz para miktarini giriniz :";
 								cin >> kullanicigiris;
 								int sendpara = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
+								
 							}
 							else if (kullanicigiris == "2")
 							{

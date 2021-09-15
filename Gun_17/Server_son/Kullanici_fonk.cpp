@@ -53,11 +53,14 @@ void MusteriHesap::para_yatir(int numara, double deger2)
 {
 	if (deger2 < 0)
 	{
-		cout << "Eksi deger giremezsiniz:" << endl;
+		para_mesaj = "0";
+		cout << "Eksi deger girildi" << endl;
 	}
 	else
 	{
-		
+		bakiye_deger = Hesaplar[numara].get_bakiye();
+		string bakiye_degers = to_string(bakiye_deger);
+
 		bakiye = Hesaplar[numara].get_bakiye();
 		
 		cout << "Hesabiniza " << deger2 << " TL yatirildi" << endl;
@@ -69,8 +72,10 @@ void MusteriHesap::para_yatir(int numara, double deger2)
 }
 void MusteriHesap::para_cek(int numara, double deger2)
 {
+	
 	if (deger2 < 0)
 	{
+		
 		eksi();
 	}
 	else if (Hesaplar[numara].get_bakiye() - deger2 >= 0)
