@@ -120,6 +120,7 @@ void baslat()
 				}
 				else
 				{
+
 					int mesajsinyali3 = send(ClientSocket, durum_mesaj_ngt.c_str(), durum_mesaj_ngt.size() + 1, 0);
 					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 					goto b;
@@ -141,11 +142,15 @@ void baslat()
 						deger1 >> y;
 						x -= 1;
 						hesap_islem.para_yatir(x, y);
-
-						hesap_islem.vektor_ekle();
-						hesap_islem.Veri_guncelle();
 						x += 1;
+						if (hesap_islem.hata_kontrol == "0")
+						{
 
+						}
+						
+							hesap_islem.vektor_ekle();
+							hesap_islem.Veri_guncelle();
+			
 					}// Para yatirma islemi
 					else if (string(buf, 0, byteRecieved) == "2") // Para cekme islemi
 					{
@@ -185,7 +190,6 @@ void baslat()
 						int havale_gonder = send(ClientSocket, hesap_islem.havale_islem.c_str(), hesap_islem.havale_islem.size() + 1, 0);
 						hesap_islem.vektor_ekle();
 						hesap_islem.Veri_guncelle();
-						gonderilecek_hesap += 1;
 					}
 
 				} while (string(buf, 0, byteRecieved) != "4");

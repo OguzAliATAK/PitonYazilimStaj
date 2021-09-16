@@ -38,6 +38,9 @@ public:
 	string havale_edilen_str;
 	string havale_islem;
 
+	string hata_mesaj = "Hatali islem";
+	string hata_kontrol = "1";
+
 
 	MusteriHesap() {}
 	MusteriHesap(string, string, string, string, int);
@@ -105,12 +108,8 @@ public:
 	void Veri_guncelle();
 	void Hesap_Kontrol(int, string);
 	void hesap_bilgi_gonder(int);
-	void Admin_giris();
 	void vektor_ekle();
 	void veridondur();
-	void hesapsayisi();
-
-	void VeriTabani_erisimi();
 
 	bool isEmpty(ifstream& pFile)
 	{

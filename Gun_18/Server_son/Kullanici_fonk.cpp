@@ -14,10 +14,6 @@ vector<int> HesapNumaralari;
 vector<string> islemdeger;
 vector<double> Para_deger;
 
-void MusteriHesap::hesapsayisi()
-{
-	cout << "Hesap sayisi : " << Hesaplar.size() << endl;
-}
 
 void MusteriHesap::veridondur()
 {
@@ -151,10 +147,14 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 {
 	bool kontrol = true;
 	int i;
+	if (hesapnumara > Hesaplar.size())
+	{
+		mesaj3 = "0";
+	}
 
 	for (i = 0; i < Hesaplar.size(); i++)
 	{
-		if (Hesaplar[i].get_HesapNo() == hesapnumara)
+		 if (Hesaplar[i].get_HesapNo() == hesapnumara)
 		{
 			if (Hesaplar[i].get_sifre() == kullanicisifre)
 			{
@@ -236,50 +236,7 @@ void MusteriHesap::Veri_guncelle()
 	}
 }
 
-void MusteriHesap::Admin_giris()
-{
-	string admin1, adminkontrol;
-	string sifre1, sifrekontrol;
-	int donus;
-	admin1 = "Admin";
-	sifre1 = "123";
-	bool kontrol1 = true;
-	do
-	{
-		cout << "Kullanici adini giriniz :"; cin >> adminkontrol;
-		cout << "Sifeyi giriniz :"; cin >> sifrekontrol;
-		if (admin1 == adminkontrol && sifre1 == sifrekontrol)
-		{
-			kontrol1 = false;
-		}
-		else
-		{
-			cout << "Kullanici adi veya sifre hatali!" << endl;
-		}
 
-	} while (kontrol1);
-
-}
-
-void MusteriHesap::VeriTabani_erisimi()
-{
-
-	cout << "************" << endl;
-	cout << "Sistemdeki kullanici sayisi " << Hesaplar.size() << endl;
-	cout << "************" << endl;
-	for (unsigned int i = 0; i < Hesaplar.size(); i++)
-	{
-		if (Hesaplar[i].get_sifre() == "")
-		{
-			cout << "" << endl;
-		}
-		else
-		{
-			cout << Hesaplar[i];
-			cout << "***********" << endl;
-		}
-	}
-}
 
 void MusteriHesap::vektor_ekle()
 {

@@ -1,12 +1,16 @@
 #include<iostream>
 #include<WS2tcpip.h>
 #include<string>
+#include<sstream>
 #include"Musteri_cl.h"
 #include"Menu.h"
 
 #pragma comment(lib, "ws2_32.lib ")
 
 using namespace std;
+
+
+
 
 void Client1::kullanici_girisi()
 {
@@ -24,8 +28,21 @@ void Client1::Havale_islem()
 	string para_deger;
 	cout << "Havale yapacagýnýz hesap numarasini giriniz :"; cin >> gonderilecek_numara;
 	int Sendnumara = send(sock, gonderilecek_numara.c_str(), gonderilecek_numara.size() + 1, 0);
+	
+	int kontrol;
+	do
+	{
+		cout << "Gonderilecek miktari giriniz : "; cin >> para_deger;
+		stringstream Para_gonderen(para_deger);
+		Para_gonderen >> kontrol;
+		if (kontrol < 0)
+		{
+			cout << "Hatali islem" << endl;
+		}
 
-	cout << "Gonderilecek miktari giriniz : "; cin >> para_deger;
+	} while (kontrol<0);
+
+	
 	int SendPara_deger = send(sock, para_deger.c_str(), para_deger.size() + 1, 0);
 	ZeroMemory(buf, 4096);
 }
@@ -65,8 +82,7 @@ void Client1::soket_baslat()
 void Client1::soket_islem()
 {
 	char buf[4096];
-	string kullanicigiris, sifre;
-	int hesapno;
+	
 	Menuler menuarayuz;
 	menuarayuz.kontrol_menusu();
 	do
@@ -102,6 +118,7 @@ void Client1::soket_islem()
 					do
 					{
 						system("cls");
+			
 						int gelen_isim = recv(sock, buf, 4096, 0);
 						cout << "Giris yapan kullanici : " << string(buf, 0, gelen_isim) << endl;
 
@@ -111,16 +128,41 @@ void Client1::soket_islem()
 						int sendveri = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
 						if (kullanicigiris == "1")
 						{
-							cout << "yatirmak istediginiz para miktarini giriniz :";
-							cin >> kullanicigiris;
-							int sendpara = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
+							int girilen_deger;
+							do
+							{
+								cout << "yatirmak istediginiz para miktarini giriniz :";
+								cin >> kullanicigiris;
+								stringstream geek(kullanicigiris);
+								geek >> girilen_deger;
+								if (girilen_deger < 0)
+								{
+									cout << "Hata" << endl;
+									Sleep(500);
+								}
 
+							} while (girilen_deger < 0);
+
+							int sendpara = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
 						}
 						else if (kullanicigiris == "2")
 						{
 							//ZeroMemory(buf, 4096);
-							cout << "Cekmek istediginiz para miktarini giriniz :";
-							cin >> kullanicigiris;
+							int girilen_deger;
+							do
+							{
+								cout << "Cekmek istediginiz para miktarini giriniz :";
+								cin >> kullanicigiris;
+								stringstream geek(kullanicigiris);
+								geek >> girilen_deger;
+								if (girilen_deger < 0)
+								{
+									cout << "Hata" << endl;
+									Sleep(500);
+								}
+
+							} while (girilen_deger < 0);
+							
 
 							int sendpara = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
 						}
@@ -130,6 +172,7 @@ void Client1::soket_islem()
 							int havale_gelen = recv(sock, buf, 4096, 0);
 							cout << string(buf, 0, havale_gelen);
 							Sleep(3500);
+
 						}
 					} while (kullanicigiris != "4");
 				}

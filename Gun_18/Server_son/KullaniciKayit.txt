@@ -2,14 +2,14 @@ Albank
 Oguz
 ATAK
 Oguz123
-8354.9
+47467.9
 1
 
 Albank
 Ahmet
 Kerim
 kerim26
-60893.9
+62042.9
 2
 
 Albank
@@ -37,7 +37,7 @@ QBanka
 Selim
 DEGER
 1234
-26006
+133069
 6
 
 QBanka
@@ -86,6 +86,6 @@ RedBANK
 Ersan
 GUL
 s26
-5413.7
+3998.87
 13
 

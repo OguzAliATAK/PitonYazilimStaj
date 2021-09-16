@@ -10,6 +10,8 @@ using namespace std;
 class Client1
 {
 public:
+	string kullanicigiris;
+	string islem;
 
 	string Host = "127.0.0.1";
 	int port = 5004;
