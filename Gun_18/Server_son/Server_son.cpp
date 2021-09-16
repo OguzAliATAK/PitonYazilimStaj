@@ -12,6 +12,7 @@ using namespace std;
 
 void baslat()
 {
+	
 	char buf[4096];
 	vector<MusteriHesap> Hesaplar;
 	vector<int> HesapNumaralari;
@@ -58,7 +59,7 @@ void baslat()
 
 		//ZeroMemory(host, NI_MAXHOST); // memset*
 		//ZeroMemory(service, NI_MAXSERV);
-
+	yeni:
 		if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
 		{
 			system("cls");
@@ -79,16 +80,17 @@ void baslat()
 		while (1)
 		{
 		b:
-
 			cout << "bekleniyor " << endl;
 
-			//ZeroMemory(buf, 4096);
 			int byteRecieved = recv(ClientSocket, buf, 4096, 0);
+
 			if (byteRecieved == SOCKET_ERROR)
 			{
 				system("cls");
 				cerr << "Kullanici cikis yapti !" << endl;
+			
 				system("cls");
+				
 				cerr << "Kullanici girisi bekleniyor " << endl;
 				break;
 			}
@@ -101,7 +103,8 @@ void baslat()
 
 			if (string(buf, 0, byteRecieved) == "1") // Kullanici girisi 
 			{
-
+				
+				
 				int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 				string alinan_hesapNo = string(buf, 0, byteRecieved);
 
@@ -126,13 +129,17 @@ void baslat()
 					goto b;
 				}
 				hesap_islem.mesaj3 = "a";
-				
+
 				do
 				{
+
+					ZeroMemory(buf, 4096);
+					
 					hesap_islem.hesap_bilgi_gonder(x);
 					int send_isim = send(ClientSocket, hesap_islem.islemler.c_str(), hesap_islem.islemler.size() + 1, 0);
 
 					recv(ClientSocket, buf, 4096, 0);
+					
 					if (string(buf, 0, byteRecieved) == "1") // Para yatirma islemi
 					{
 
@@ -144,15 +151,14 @@ void baslat()
 						x -= 1;
 						hesap_islem.para_yatir(x, y);
 						x += 1;
-						if (hesap_islem.hata_kontrol == "0")
-						{
-
-						}
 
 						hesap_islem.vektor_ekle();
 						hesap_islem.Veri_guncelle();
+						
+					
 
 					}// Para yatirma islemi
+					
 					else if (string(buf, 0, byteRecieved) == "2") // Para cekme islemi
 					{
 						///	ZeroMemory(buf, 4096);
@@ -188,15 +194,38 @@ void baslat()
 						int para1;
 						deger3 >> para1;
 						hesap_islem.transfer(x, gonderilecek_hesap, para1);
-						int havale_gonder = send(ClientSocket, hesap_islem.havale_islem.c_str(), hesap_islem.havale_islem.size() + 1, 0);
-						hesap_islem.vektor_ekle();
-						hesap_islem.Veri_guncelle();
+						gonderilecek_hesap += 1;
+						if (hesap_islem.hata_kontrol == "0")
+						{
+							cout << "zzasdasd" << endl;
+							int hata_gonder = send(ClientSocket, hesap_islem.hata_kontrol.c_str(), hesap_islem.hata_kontrol.size() + 1, 0);
+						}
+						else
+						{
+							cout << "islem basarili" << endl;
+							int havale_gonder = send(ClientSocket, hesap_islem.havale_islem.c_str(), hesap_islem.havale_islem.size() + 1, 0);
+							hesap_islem.vektor_ekle();
+							hesap_islem.Veri_guncelle();
+							int havale_gonder1 = send(ClientSocket, hesap_islem.havale_islem.c_str(), hesap_islem.havale_islem.size() + 1, 0);
+							
+						}
+						hesap_islem.hata_kontrol = "1";
 					}
-
-				} while (string(buf, 0, byteRecieved) != "4");
-
+					cout << "islem" << endl;
+					cout << string(buf, 0, byteRecieved) << endl;
+					Sleep(250);
+					if (string(buf, 0, byteRecieved) == "")
+					{
+						cout << "Ana menuye donuluyor ";
+						Sleep(350);
+						goto yeni;
+					}
+					
+					
+				} while (string(buf, 0, byteRecieved) != "e");
+				
 			}
-			
+
 		}
 	} while (1);
 }

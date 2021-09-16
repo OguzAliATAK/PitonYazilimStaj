@@ -73,58 +73,63 @@ void MusteriHesap::para_cek(int numara, double deger2)
 	{
 		hata_kontrol = "0";
 		cout << "Hatali islem..." << endl;
-		Sleep(1500);
+		
 	}
 }
 void MusteriHesap::transfer(int numarakullanici, int numaragiden, double deger2)
 {
 	numarakullanici -= 1;
-	if (deger2 < 0)
+	if (numaragiden > Hesaplar.size())
 	{
-
+		hata_kontrol = "0";
 	}
-	if (deger2 < Hesaplar[numarakullanici].get_bakiye())
+	else
 	{
-		if (Hesaplar[numarakullanici].get_HesapNo() == Hesaplar[numaragiden].get_HesapNo())
+		hata_kontrol = "1";
+		if (deger2 < Hesaplar[numarakullanici].get_bakiye())
 		{
-			cout << "Hata.." << endl;
-			Sleep(1500);
-		}
-		else if (Hesaplar[numarakullanici].get_banka_adi() == Hesaplar[numaragiden].get_banka_adi())
-		{
-			bakiye = Hesaplar[numarakullanici].get_bakiye();
-			bakiye -= deger2;
-			Hesaplar[numarakullanici].set_bakiye(bakiye);
+			if (Hesaplar[numarakullanici].get_HesapNo() == Hesaplar[numaragiden].get_HesapNo())
+			{
+				cout << "Hata.." << endl;
 
-			havale_isim = Hesaplar[numaragiden].get_isim() + " " + Hesaplar[numaragiden].get_soyad();
-			havale_edilen_para = deger2;
-			havale_edilen_str = to_string(havale_edilen_para);
+			}
+			else if (Hesaplar[numarakullanici].get_banka_adi() == Hesaplar[numaragiden].get_banka_adi())
+			{
+				bakiye = Hesaplar[numarakullanici].get_bakiye();
+				bakiye -= deger2;
+				Hesaplar[numarakullanici].set_bakiye(bakiye);
 
-			havale_islem = "Havale yapilan kullanici : " + havale_isim + "  Gonderilen para  :" + havale_edilen_str;
+				havale_isim = Hesaplar[numaragiden].get_isim() + " " + Hesaplar[numaragiden].get_soyad();
+				havale_edilen_para = deger2;
+				havale_edilen_str = to_string(havale_edilen_para);
+
+				havale_islem = "Havale yapilan kullanici : " + havale_isim + "  Gonderilen para  :" + havale_edilen_str;
 
 
-			double alici;
-			alici = Hesaplar[numaragiden].get_bakiye();
-			alici += deger2;
-			Hesaplar[numaragiden].set_bakiye(alici);
-		}
-		else
-		{
-			bakiye = Hesaplar[numarakullanici].get_bakiye();
-			bakiye -= deger2 + (deger2 * komisyon);
-			Hesaplar[numarakullanici].set_bakiye(bakiye);
+				double alici;
+				alici = Hesaplar[numaragiden].get_bakiye();
+				alici += deger2;
+				Hesaplar[numaragiden].set_bakiye(alici);
+			}
+			else
+			{
+				bakiye = Hesaplar[numarakullanici].get_bakiye();
+				bakiye -= deger2 + (deger2 * komisyon);
+				Hesaplar[numarakullanici].set_bakiye(bakiye);
 
-			havale_isim = Hesaplar[numaragiden].get_isim() + " " + Hesaplar[numaragiden].get_soyad();
-			havale_edilen_para = deger2;
-			havale_edilen_str = to_string(havale_edilen_para);
-			havale_islem = "Havale yapilan kullanici : " + havale_isim + "  Gonderilen para  :" + havale_edilen_str;
+				havale_isim = Hesaplar[numaragiden].get_isim() + " " + Hesaplar[numaragiden].get_soyad();
+				havale_edilen_para = deger2;
+				havale_edilen_str = to_string(havale_edilen_para);
+				havale_islem = "Havale yapilan kullanici : " + havale_isim + "  Gonderilen para  :" + havale_edilen_str;
 
-			double alici;
-			alici = Hesaplar[numaragiden].get_bakiye();
-			alici += deger2;
-			Hesaplar[numaragiden].set_bakiye(alici);
+				double alici;
+				alici = Hesaplar[numaragiden].get_bakiye();
+				alici += deger2;
+				Hesaplar[numaragiden].set_bakiye(alici);
+			}
 		}
 	}
+	
 }
 
 void MusteriHesap::hesap_bilgi_gonder(int hesapnumara)
@@ -160,7 +165,6 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 				Veri_guncelle();
 				mesaj3 = "1";
 				kullanicisifre = mesaj3;
-				int mesajsinyal = send(ClientSocket, kullanicisifre.c_str(), kullanicisifre.size() + 1, 0);
 				kontrol = false;
 			}
 			else

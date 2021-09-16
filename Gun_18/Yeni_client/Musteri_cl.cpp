@@ -107,8 +107,8 @@ void Client1::soket_islem()
 						Sleep(1500);
 						goto a;
 					}
-
-					Sleep(1500);
+						
+					cout << gelen_sinyal << endl;
 					do
 					{
 						system("cls");
@@ -163,12 +163,22 @@ void Client1::soket_islem()
 						else if (kullanicigiris == "3")
 						{
 							Havale_islem();
-							int havale_gelen = recv(sock, buf, 4096, 0);
-							cout << string(buf, 0, havale_gelen);
-							Sleep(3500);
-
+							int gelenasd = recv(sock, buf, 4096, 0);
+							if (string(buf, 0, gelenasd) == "0")
+							{
+								cout << string(buf, 0, gelenasd) << endl;
+								cout << "Hatali hesap no " << endl;
+								Sleep(3500);
+							}
+							else
+							{
+								
+								int havale_gelen = recv(sock, buf, 4096, 0);
+								cout << string(buf, 0, havale_gelen);
+								Sleep(3500);
+							}
 						}
-					} while (kullanicigiris != "4");
+					} while (kullanicigiris != "e");
 					cout << "test 1";
 				}
 				cout << "test 2";
