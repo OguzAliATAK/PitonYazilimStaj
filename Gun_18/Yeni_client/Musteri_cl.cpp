@@ -9,16 +9,13 @@
 
 using namespace std;
 
-
-
-
 void Client1::kullanici_girisi()
 {
-		string hesapnumara, hesapsifre;
-		cout << "Hesap nuamarasini giriniz : "; cin >> hesapnumara;
-		int sendResult1 = send(sock, hesapnumara.c_str(), hesapnumara.size() + 1, 0);
-		cout << "Sifrenizi giriniz  : "; cin >> hesapsifre;
-		int sendResult2 = send(sock, hesapsifre.c_str(), hesapsifre.size() + 1, 0);	
+	string hesapnumara, hesapsifre;
+	cout << "Hesap nuamarasini giriniz : "; cin >> hesapnumara;
+	int sendResult1 = send(sock, hesapnumara.c_str(), hesapnumara.size() + 1, 0);
+	cout << "Sifrenizi giriniz  : "; cin >> hesapsifre;
+	int sendResult2 = send(sock, hesapsifre.c_str(), hesapsifre.size() + 1, 0);
 }
 
 void Client1::Havale_islem()
@@ -26,9 +23,9 @@ void Client1::Havale_islem()
 	ZeroMemory(buf, 4096);
 	string gonderilecek_numara;
 	string para_deger;
-	cout << "Havale yapacagýnýz hesap numarasini giriniz :"; cin >> gonderilecek_numara;
+	cout << "Havale yapacaginiz hesap numarasini giriniz :"; cin >> gonderilecek_numara;
 	int Sendnumara = send(sock, gonderilecek_numara.c_str(), gonderilecek_numara.size() + 1, 0);
-	
+
 	int kontrol;
 	do
 	{
@@ -40,9 +37,8 @@ void Client1::Havale_islem()
 			cout << "Hatali islem" << endl;
 		}
 
-	} while (kontrol<0);
+	} while (kontrol < 0);
 
-	
 	int SendPara_deger = send(sock, para_deger.c_str(), para_deger.size() + 1, 0);
 	ZeroMemory(buf, 4096);
 }
@@ -82,16 +78,14 @@ void Client1::soket_baslat()
 void Client1::soket_islem()
 {
 	char buf[4096];
-	
+
 	Menuler menuarayuz;
 	menuarayuz.kontrol_menusu();
 	do
 	{
-		a:
+	a:
 		system("cls");
-		
 		menuarayuz.kontrol_menusu();
-		
 		cout << ">";
 		cin >> kullanicigiris;
 		if (kullanicigiris.size() > 0)
@@ -118,7 +112,7 @@ void Client1::soket_islem()
 					do
 					{
 						system("cls");
-			
+
 						int gelen_isim = recv(sock, buf, 4096, 0);
 						cout << "Giris yapan kullanici : " << string(buf, 0, gelen_isim) << endl;
 
@@ -162,7 +156,7 @@ void Client1::soket_islem()
 								}
 
 							} while (girilen_deger < 0);
-							
+
 
 							int sendpara = send(sock, kullanicigiris.c_str(), kullanicigiris.size() + 1, 0);
 						}
@@ -175,8 +169,11 @@ void Client1::soket_islem()
 
 						}
 					} while (kullanicigiris != "4");
+					cout << "test 1";
 				}
+				cout << "test 2";
 			}
+			cout << "test 3";
 		}
 	} while (1);
 }

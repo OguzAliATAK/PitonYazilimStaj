@@ -11,6 +11,7 @@ class Client1
 {
 public:
 	string kullanicigiris;
+	string islem2;
 	string islem;
 
 	string Host = "127.0.0.1";

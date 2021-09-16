@@ -57,7 +57,7 @@ void MusteriHesap::para_yatir(int numara, double deger2)
 }
 void MusteriHesap::para_cek(int numara, double deger2)
 {
-	
+
 	if (deger2 < 0)
 	{
 		hata_kontrol = "0";
@@ -81,7 +81,7 @@ void MusteriHesap::transfer(int numarakullanici, int numaragiden, double deger2)
 	numarakullanici -= 1;
 	if (deger2 < 0)
 	{
-		
+
 	}
 	if (deger2 < Hesaplar[numarakullanici].get_bakiye())
 	{
@@ -100,8 +100,8 @@ void MusteriHesap::transfer(int numarakullanici, int numaragiden, double deger2)
 			havale_edilen_para = deger2;
 			havale_edilen_str = to_string(havale_edilen_para);
 
-			havale_islem = "Havale yapilan kullanici : " + havale_isim +"  Gonderilen para  :" + havale_edilen_str;
-	
+			havale_islem = "Havale yapilan kullanici : " + havale_isim + "  Gonderilen para  :" + havale_edilen_str;
+
 
 			double alici;
 			alici = Hesaplar[numaragiden].get_bakiye();
@@ -124,7 +124,6 @@ void MusteriHesap::transfer(int numarakullanici, int numaragiden, double deger2)
 			alici += deger2;
 			Hesaplar[numaragiden].set_bakiye(alici);
 		}
-
 	}
 }
 
@@ -139,7 +138,7 @@ void MusteriHesap::hesap_bilgi_gonder(int hesapnumara)
 			giden_soyad = Hesaplar[i].get_soyad();
 			double giden_bk = Hesaplar[i].get_bakiye();
 			giden_bakiye = to_string(giden_bk);
-			islemler = giden_isim + " " + giden_soyad + " Bakiye : " + giden_bakiye;	
+			islemler = giden_isim + " " + giden_soyad + " Bakiye : " + giden_bakiye;
 		}
 	}
 }
@@ -154,7 +153,7 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 
 	for (i = 0; i < Hesaplar.size(); i++)
 	{
-		 if (Hesaplar[i].get_HesapNo() == hesapnumara)
+		if (Hesaplar[i].get_HesapNo() == hesapnumara)
 		{
 			if (Hesaplar[i].get_sifre() == kullanicisifre)
 			{
@@ -244,4 +243,3 @@ void MusteriHesap::vektor_ekle()
 	islemdeger.push_back("Para_yatir");
 	Para_deger.push_back(deger);
 }
-

@@ -79,9 +79,9 @@ void baslat()
 		while (1)
 		{
 		b:
-			
+
 			cout << "bekleniyor " << endl;
-			
+
 			//ZeroMemory(buf, 4096);
 			int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 			if (byteRecieved == SOCKET_ERROR)
@@ -101,7 +101,7 @@ void baslat()
 
 			if (string(buf, 0, byteRecieved) == "1") // Kullanici girisi 
 			{
-				
+
 				int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 				string alinan_hesapNo = string(buf, 0, byteRecieved);
 
@@ -115,7 +115,7 @@ void baslat()
 				hesap_islem.Hesap_Kontrol(x, alinan_sifre);
 				if (hesap_islem.mesaj3 == "1")
 				{
-					int mesajsinyali1 = send(ClientSocket,durum_mesaj.c_str(),durum_mesaj.size() + 1, 0);
+					int mesajsinyali1 = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
 					int mesajsinyali = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 				}
 				else
@@ -125,7 +125,8 @@ void baslat()
 					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 					goto b;
 				}
-				hesap_islem.Veri_guncelle();
+				hesap_islem.mesaj3 = "a";
+				
 				do
 				{
 					hesap_islem.hesap_bilgi_gonder(x);
@@ -134,7 +135,7 @@ void baslat()
 					recv(ClientSocket, buf, 4096, 0);
 					if (string(buf, 0, byteRecieved) == "1") // Para yatirma islemi
 					{
-					
+
 						int byte_yatirilan = recv(ClientSocket, buf, 4096, 0);
 						string degerpara = string(buf, 0, byte_yatirilan);
 						stringstream deger1(degerpara);
@@ -147,10 +148,10 @@ void baslat()
 						{
 
 						}
-						
-							hesap_islem.vektor_ekle();
-							hesap_islem.Veri_guncelle();
-			
+
+						hesap_islem.vektor_ekle();
+						hesap_islem.Veri_guncelle();
+
 					}// Para yatirma islemi
 					else if (string(buf, 0, byteRecieved) == "2") // Para cekme islemi
 					{
@@ -171,7 +172,7 @@ void baslat()
 
 					else if (string(buf, 0, byteRecieved) == "3")
 					{
-						
+
 						int byte_gelen_no = recv(ClientSocket, buf, 4096, 0);
 						string gelen_hesap_no = string(buf, 0, byte_gelen_no);
 
@@ -195,11 +196,7 @@ void baslat()
 				} while (string(buf, 0, byteRecieved) != "4");
 
 			}
-			else
-			{
-				cout << "Ana Menuye donuldu" << endl;
-				send(ClientSocket, buf, byteRecieved + 1, 0);
-			}
+			
 		}
 	} while (1);
 }

@@ -2,28 +2,28 @@ Albank
 Oguz
 ATAK
 Oguz123
-47467.9
+300.812
 1
 
 Albank
 Ahmet
 Kerim
 kerim26
-62042.9
+62606.9
 2
 
 Albank
 Merve
 DEMIR
 Merve16
-1350
+1853
 3
 
 CBank
 Emre
 GURDAL
 emre123
-40079
+40087
 4
 
 CBank
@@ -37,7 +37,7 @@ QBanka
 Selim
 DEGER
 1234
-133069
+133589
 6
 
 QBanka
@@ -58,7 +58,7 @@ CBank
 Nergis
 AL
 nergis14
-1256
+1321
 9
 
 SekerBNK
