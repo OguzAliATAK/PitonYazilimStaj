@@ -1,0 +1,6 @@
+﻿  Kullanici_fonk.cpp
+C:\Users\oalia\Desktop\Server_son\Server_son\Kullanici_fonk.cpp(142,16): warning C4018: '<': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Server_son\Server_son\Kullanici_fonk.cpp(159,16): warning C4018: '<': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Server_son\Server_son\Kullanici_fonk.cpp(247,6): warning C4101: 'donus': yerel değişken başvurusu kaldırıldı
+C:\Users\oalia\Desktop\Server_son\Server_son\Kullanici_fonk.cpp(224): warning C4715: 'operator<<': tüm denetim yolları değer döndürmez
+  Server_son.vcxproj -> C:\Users\oalia\Desktop\Server_son\Server_son\Debug\Server_son.exe
