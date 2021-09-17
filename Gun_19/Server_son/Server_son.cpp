@@ -117,16 +117,19 @@ void baslat()
 				hesap_islem.Hesap_Kontrol(x, alinan_sifre);
 				if (hesap_islem.mesaj3 == "1")
 				{
-					int mesajsinyali1 = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
 					int mesajsinyali = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
+					int mesajsinyali1 = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
+					
 				}
 				else
 				{
-
-					int mesajsinyali3 = send(ClientSocket, durum_mesaj_ngt.c_str(), durum_mesaj_ngt.size() + 1, 0);
 					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
+					int mesajsinyali3 = send(ClientSocket, durum_mesaj_ngt.c_str(), durum_mesaj_ngt.size() + 1, 0);
+					
 					goto b;
 				}
+
+
 				hesap_islem.mesaj3 = "a";
 
 				do
@@ -232,5 +235,6 @@ void main()
 	cout << "Server Baslatildi:" << endl;
 
 	baslat();
+	return;
 	system("pause");
 }

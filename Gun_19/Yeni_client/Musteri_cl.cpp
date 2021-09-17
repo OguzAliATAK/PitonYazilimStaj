@@ -9,6 +9,8 @@
 
 using namespace std;
 
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 void Client1::kullanici_girisi()
 {
 	string hesapnumara, hesapsifre;
@@ -96,25 +98,33 @@ void Client1::soket_islem()
 				if (kullanicigiris == "1")
 				{
 					kullanici_girisi(); // kullanici girisi bekleniyor 
-					int islem_durum = recv(sock, buf, 4096, 0);
-					cout << string(buf, 0, islem_durum) << endl;
+					
+					
 					int gelen_sinyal = recv(sock, buf, 4096, 0);
 
 					if (string(buf, 0, gelen_sinyal) != "1")
 					{
-						cout << "Kullanici hatali" << endl;
+						int islem_durum = recv(sock, buf, 4096, 0);
+						SetConsoleTextAttribute(hConsole, 12);
+						cout << string(buf, 0, islem_durum) << endl;
+						SetConsoleTextAttribute(hConsole, 11);
 						cout << "Ana Menuye donuluyor " << endl;
 						Sleep(1500);
 						goto a;
 					}
-						
-					cout << gelen_sinyal << endl;
+					int islem_durum = recv(sock, buf, 4096, 0);
+					SetConsoleTextAttribute(hConsole, 10);
+					cout << string(buf, 0, islem_durum) << endl;
+					SetConsoleTextAttribute(hConsole, 11);
+					Sleep(1500);
 					do
 					{
 						system("cls");
 
 						int gelen_isim = recv(sock, buf, 4096, 0);
+						SetConsoleTextAttribute(hConsole, 15);
 						cout << "Giris yapan kullanici : " << string(buf, 0, gelen_isim) << endl;
+						SetConsoleTextAttribute(hConsole, 11);
 
 						menuarayuz.ana_menu();
 
@@ -170,7 +180,7 @@ void Client1::soket_islem()
 							}
 							else
 							{
-								HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+								
 								SetConsoleTextAttribute(hConsole, 12);
 								int havale_gelen = recv(sock, buf, 4096, 0);
 								cout << string(buf, 0, havale_gelen) << endl;

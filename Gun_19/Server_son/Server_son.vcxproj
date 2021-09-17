@@ -140,12 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Kullanici_fonk.cpp" />
-    <ClCompile Include="Server.cpp" />
     <ClCompile Include="Server_son.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Kullanici_fonk.h" />
-    <ClInclude Include="Server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

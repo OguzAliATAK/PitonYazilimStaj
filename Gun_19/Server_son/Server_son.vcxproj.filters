@@ -18,17 +18,11 @@
     <ClCompile Include="Server_son.cpp">
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
-    <ClCompile Include="Server.cpp">
-      <Filter>Kaynak Dosyalar</Filter>
-    </ClCompile>
     <ClCompile Include="Kullanici_fonk.cpp">
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Server.h">
-      <Filter>Kaynak Dosyalar</Filter>
-    </ClInclude>
     <ClInclude Include="Kullanici_fonk.h">
       <Filter>Kaynak Dosyalar</Filter>
     </ClInclude>
