@@ -124,7 +124,6 @@ void baslat()
 				
 				cout << "Kullanici sayisi : " << Kullanici_sayisi << endl;
 				Kullanici_sayisi++;
-
 				
 				do
 				{
@@ -211,6 +210,8 @@ void baslat()
 					Sleep(50);
 					if (string(buf, 0, byteRecieved) == "e")
 					{
+						hesap_islem.sifre_yenile();
+						hesap_islem.Veri_guncelle();
 						SetConsoleTextAttribute(hConsole, 12);
 						cout << "Cikis yapan port : " << service << endl;
 						SetConsoleTextAttribute(hConsole, 11);
@@ -220,6 +221,8 @@ void baslat()
 
 					else if (string(buf, 0, byteRecieved) == "")
 					{
+						hesap_islem.sifre_yenile();
+						hesap_islem.Veri_guncelle();
 						SetConsoleTextAttribute(hConsole, 12);
 						cout << "Cikis yapan port : " << service << endl;
 						SetConsoleTextAttribute(hConsole, 11);

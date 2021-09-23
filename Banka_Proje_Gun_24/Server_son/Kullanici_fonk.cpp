@@ -152,7 +152,7 @@ void MusteriHesap::hesap_bilgi_gonder(int hesapnumara)
 void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 {
 	bool kontrol = true;
-	int i;
+	
 	if (hesapnumara > Hesaplar.size())
 	{
 		kontrol_mesaj = "0";
@@ -164,6 +164,12 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 		{
 			if (Hesaplar[i].get_sifre() == kullanicisifre)
 			{
+				gercek_hesapNo = Hesaplar[i].get_HesapNo();
+				gercek_sifre = Hesaplar[i].get_sifre();
+				gecici_sifre = "kn;=:p\)]6a%,BhV";
+
+				Hesaplar[i].set_sifre(gecici_sifre);
+
 				Veri_guncelle();
 				kontrol_mesaj = "1";
 				kullanicisifre = kontrol_mesaj;
@@ -175,6 +181,12 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 			}
 		}
 	}
+}
+
+void MusteriHesap::sifre_yenile()
+{
+	Hesaplar[gercek_hesapNo-1].set_sifre(gercek_sifre);
+	Veri_guncelle();
 }
 
 void MusteriHesap::close() { open = false; }

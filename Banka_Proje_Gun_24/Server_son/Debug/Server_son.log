@@ -1,3 +1,8 @@
-﻿  Server_son.cpp
-C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Server_son.cpp(239,1): warning C4326: 'main' öğesinin dönüş türü 'int' olmalıdır, 'void' değil
+﻿  Kullanici_fonk.cpp
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(80,18): warning C4018: '>': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(137,16): warning C4018: '<': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(156,18): warning C4018: '>': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(161,16): warning C4018: '<': imzalı/imzasız uyuşmazlığı
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(169,20): warning C4129: ')': tanınmayan karakter kaçış sırası
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Kullanici_fonk.cpp(237): warning C4715: 'operator<<': tüm denetim yolları değer döndürmez
   Server_son.vcxproj -> C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Debug\Server_son.exe

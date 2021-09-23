@@ -14,7 +14,7 @@ int main()
 	HWND console = GetConsoleWindow();
 	GetWindowRect(console, &r); 
 	MoveWindow(console, r.left, r.top, 500, 350, TRUE);
-	system("title Kullanici");
+	//system("title Kullanici");
 
 	Client_kurulum Client;
 

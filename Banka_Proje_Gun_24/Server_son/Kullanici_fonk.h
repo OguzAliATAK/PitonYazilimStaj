@@ -18,7 +18,7 @@ private:
 public:
 
 	string kontrol_mesaj = "a";
-
+	int i;
 	string para_mesaj = "0";
 	double bakiye_deger = 0;
 	string isim_kontrol;
@@ -26,6 +26,11 @@ public:
 	int  HesapNo_kontrol;
 	double deger;
 	double komisyon = 0.002;
+
+	string gercek_sifre;
+	string gecici_sifre;
+	int gercek_hesapNo;
+	int gecici_hesapNo;
 
 	string giden_isim;
 	string giden_soyad;
@@ -113,6 +118,7 @@ public:
 	void vektor_ekle();
 	void veridondur();
 	void kayitbilgi();
+	void sifre_yenile();
 
 	bool isEmpty(ifstream& pFile)
 	{
