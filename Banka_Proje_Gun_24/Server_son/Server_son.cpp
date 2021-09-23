@@ -10,12 +10,12 @@
 #pragma comment (lib , "ws2_32.lib")
 
 using namespace std;
-
+int a = 1;
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void baslat()
 {
-	
+
 	char buf[4096];
 	vector<MusteriHesap> Hesaplar;
 	vector<int> HesapNumaralari;
@@ -62,9 +62,9 @@ void baslat()
 
 		//ZeroMemory(host, NI_MAXHOST); // memset*
 		//ZeroMemory(service, NI_MAXSERV);
-		yeni:
+	yeni:
 		if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
-		{	
+		{
 		}
 		else
 		{
@@ -75,11 +75,11 @@ void baslat()
 
 		string durum_mesaj = "Islem basarili";
 		string durum_mesaj_ngt = "Islem basarisiz";
-		
+
 		while (1)
 		{
 		b:
-			
+
 			int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 
 			if (byteRecieved == SOCKET_ERROR)
@@ -87,50 +87,51 @@ void baslat()
 				break;
 			}
 			if (byteRecieved == 0)
-			{			
+			{
 				break;
 			}
 
 			if (string(buf, 0, byteRecieved) == "1") // Kullanici girisi 
 			{
-				
+
 				int byteRecieved = recv(ClientSocket, buf, 4096, 0);
 				string alinan_hesapNo = string(buf, 0, byteRecieved);
 
 				stringstream deger(alinan_hesapNo);
-				int x;
-				deger >> x;
+				int Hesap_Numara;
+				deger >> Hesap_Numara;
 				int byte_sifre = recv(ClientSocket, buf, 4096, 0);
 				string alinan_sifre = string(buf, 0, byte_sifre);
-				hesap_islem.Hesap_Kontrol(x, alinan_sifre);
+				hesap_islem.Hesap_Kontrol(Hesap_Numara, alinan_sifre);
 				if (hesap_islem.mesaj3 == "1")
 				{
 					int mesajsinyali = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 					int mesajsinyali1 = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
-					
+
 				}
 				else
 				{
 					int mesajsinyali2 = send(ClientSocket, hesap_islem.mesaj3.c_str(), hesap_islem.mesaj3.size() + 1, 0);
 					int mesajsinyali3 = send(ClientSocket, durum_mesaj_ngt.c_str(), durum_mesaj_ngt.size() + 1, 0);
-					
 					goto b;
 				}
-
 
 				hesap_islem.mesaj3 = "a";
 				SetConsoleTextAttribute(hConsole, 14);
 				cout << "Giris yapan port : " << service << endl;
 				
+				cout << "Kullanici sayisi : " << a << endl;
+				a++;
+
 				do
 				{
 					SetConsoleTextAttribute(hConsole, 11);
 					ZeroMemory(buf, 4096);
-					
-					hesap_islem.hesap_bilgi_gonder(x);
+
+					hesap_islem.hesap_bilgi_gonder(Hesap_Numara);
 					int send_isim = send(ClientSocket, hesap_islem.islemler.c_str(), hesap_islem.islemler.size() + 1, 0);
 
-					recv(ClientSocket, buf, 4096, 0);		
+					recv(ClientSocket, buf, 4096, 0);
 					if (string(buf, 0, byteRecieved) == "1") // Para yatirma islemi
 					{
 						int byte_yatirilan = recv(ClientSocket, buf, 4096, 0);
@@ -138,20 +139,20 @@ void baslat()
 						stringstream deger1(degerpara);
 						int y;
 						deger1 >> y;
-						x -= 1;
-						hesap_islem.para_yatir(x, y);
-						x += 1;
-						
+						Hesap_Numara -= 1;
+						hesap_islem.para_yatir(Hesap_Numara, y);
+						Hesap_Numara += 1;
+
 						hesap_islem.vektor_ekle();
 						hesap_islem.Veri_guncelle();
 						cout << "Port : " << service << " - Para yatir " << endl;
-
 						
+						int islem_durum = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
 
 					}// Para yatirma islemi
-					
+
 					else if (string(buf, 0, byteRecieved) == "2") // Para cekme islemi
-					{	
+					{
 						int byte_cekilen = recv(ClientSocket, buf, 4096, 0);
 						string cekilecek_deger = string(buf, 0, byte_cekilen);
 
@@ -159,17 +160,19 @@ void baslat()
 						int para_deger;
 						cekilecek_miktar >> para_deger;
 
-						x -= 1;
-						hesap_islem.para_cek(x, para_deger);
+						Hesap_Numara -= 1;
+						hesap_islem.para_cek(Hesap_Numara, para_deger);
 						hesap_islem.vektor_ekle();
 						hesap_islem.Veri_guncelle();
-						x += 1;
+						Hesap_Numara += 1;
 						cout << "Port : " << service << " - Para cek " << endl;
+
+						int islem_durum = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
 					} // Para cekme islemi
 
 					else if (string(buf, 0, byteRecieved) == "3")
 					{
-						
+
 						int byte_gelen_no = recv(ClientSocket, buf, 4096, 0);
 						string gelen_hesap_no = string(buf, 0, byte_gelen_no);
 
@@ -182,9 +185,9 @@ void baslat()
 						string havale_edilen = string(buf, 0, byte_havale_edilen);
 
 						stringstream deger3(havale_edilen);
-						int para1;
-						deger3 >> para1;
-						hesap_islem.transfer(x, gonderilecek_hesap, para1);
+						int havale_edilen_para;
+						deger3 >> havale_edilen_para;
+						hesap_islem.transfer(Hesap_Numara, gonderilecek_hesap, havale_edilen_para);
 						gonderilecek_hesap += 1;
 						if (hesap_islem.hata_kontrol == "0")
 						{
@@ -198,6 +201,7 @@ void baslat()
 							hesap_islem.Veri_guncelle();
 							cout << "Port : " << service << " Basarili havale islemi  " << endl;
 							int havale_gonder1 = send(ClientSocket, hesap_islem.havale_islem.c_str(), hesap_islem.havale_islem.size() + 1, 0);
+							int islem_durum = send(ClientSocket, durum_mesaj.c_str(), durum_mesaj.size() + 1, 0);
 						}
 						hesap_islem.hata_kontrol = "1";
 					}
@@ -207,6 +211,7 @@ void baslat()
 						SetConsoleTextAttribute(hConsole, 12);
 						cout << "Cikis yapan port : " << service << endl;
 						SetConsoleTextAttribute(hConsole, 11);
+						a--;
 					}
 
 					else if (string(buf, 0, byteRecieved) == "")
@@ -214,10 +219,11 @@ void baslat()
 						SetConsoleTextAttribute(hConsole, 12);
 						cout << "Cikis yapan port : " << service << endl;
 						SetConsoleTextAttribute(hConsole, 11);
+						a--;
 						Sleep(250);
 						goto yeni;
 					}
-					
+
 				} while (string(buf, 0, byteRecieved) != "e");
 			}
 		}
@@ -241,7 +247,6 @@ void main()
 	thread kullanici2(baslat);
 	thread kullanici3(baslat);
 	thread kullanici4(baslat);
-
 
 	kullanici1.join();
 	kullanici2.join();

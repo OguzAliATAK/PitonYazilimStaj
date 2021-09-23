@@ -140,11 +140,12 @@ void MusteriHesap::hesap_bilgi_gonder(int hesapnumara)
 		{
 			giden_isim = Hesaplar[i].get_isim();
 			giden_soyad = Hesaplar[i].get_soyad();
+			giden_banka = Hesaplar[i].get_banka_adi();
 			int giden_no = Hesaplar[i].get_HesapNo();
 			giden_hesapno = to_string(giden_no);
 			double giden_bk = Hesaplar[i].get_bakiye();
 			giden_bakiye = to_string(giden_bk);
-			islemler = giden_isim + " " + giden_soyad + "\nHesap  No : " + giden_hesapno + "\nBakiye : " + giden_bakiye;
+			islemler = giden_isim + " " + giden_soyad + "\nBanka : " + giden_banka +"\nHesap  No : " + giden_hesapno + "\nBakiye : " + giden_bakiye;
 		}
 	}
 }

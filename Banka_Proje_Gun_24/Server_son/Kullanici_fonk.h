@@ -30,6 +30,7 @@ public:
 	string giden_isim;
 	string giden_soyad;
 	string giden_hesapno;
+	string giden_banka;
 	string islemler;
 	string giden_bakiye;
 
@@ -124,8 +125,6 @@ public:
 
 	friend ifstream& operator >> (ifstream& in, MusteriHesap& Hesap1);
 	friend ofstream& operator << (ofstream& out, MusteriHesap& Hesap1);
-
-	string mesaj2 = "22222";
 
 	string degerler;
 
