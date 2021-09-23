@@ -11,7 +11,7 @@ using namespace std;
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void Client1::kullanici_girisi()
+void Client_kurulum::kullanici_girisi()
 {
 	string hesapnumara, hesapsifre;
 	cout << "Hesap nuamarasini giriniz : "; cin >> hesapnumara;
@@ -20,7 +20,7 @@ void Client1::kullanici_girisi()
 	int sendResult2 = send(sock, hesapsifre.c_str(), hesapsifre.size() + 1, 0);
 }
 
-void Client1::Havale_islem()
+void Client_kurulum::Havale_islem()
 {
 	ZeroMemory(buf, 4096);
 	string gonderilecek_numara;
@@ -45,11 +45,11 @@ void Client1::Havale_islem()
 	ZeroMemory(buf, 4096);
 }
 
-void Client1::soket_baslat()
+void Client_kurulum::soket_baslat()
 {
-	if (wsresult != 0)
+	if (soket_durumu != 0)
 	{
-		cerr << "Baslatilamiyor " << wsresult << endl;
+		cerr << "Baslatilamiyor " << soket_durumu << endl;
 		return;
 	}
 	if (sock == INVALID_SOCKET)
@@ -66,18 +66,18 @@ void Client1::soket_baslat()
 	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
 	if (connResult == SOCKET_ERROR)
 	{
-		cerr << "Server'a baglanilamadi - Hata : " << WSAGetLastError() << endl;
+		cerr << "Sunucu Mesgul veya aktif degil." << endl;
 		Sleep(2950);
 		exit(-1);
 		closesocket(sock);
 		WSACleanup();
 		return;
 	}
-	cout << "Server'a baglandi" << endl;
+	cout << "Sunucu'ya baglandi" << endl;
 	Sleep(1550);
 }
 
-void Client1::soket_islem()
+void Client_kurulum::soket_islem()
 {
 	char buf[4096];
 
@@ -207,7 +207,7 @@ void Client1::soket_islem()
 		}
 	} while (1);
 }
-void Client1::soket_kapat()
+void Client_kurulum::soket_kapat()
 {
 	closesocket(sock);
 	WSACleanup();

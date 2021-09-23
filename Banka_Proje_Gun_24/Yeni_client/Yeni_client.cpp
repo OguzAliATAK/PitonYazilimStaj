@@ -14,13 +14,13 @@ int main()
 	HWND console = GetConsoleWindow();
 	GetWindowRect(console, &r); 
 	MoveWindow(console, r.left, r.top, 500, 350, TRUE);
-	system("title Client");
+	system("title Kullanici");
 
-	Client1 clienta;
+	Client_kurulum Client;
 
-	clienta.soket_baslat();
-	clienta.soket_islem();
-	clienta.soket_kapat();
+	Client.soket_baslat();
+	Client.soket_islem();
+	Client.soket_kapat();
 
 	system("pause");
 	return 0;
