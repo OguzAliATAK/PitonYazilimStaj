@@ -17,7 +17,7 @@ private:
 	string isim, soyad, sifre, banka_adi;
 public:
 
-	string mesaj3 = "a";
+	string kontrol_mesaj = "a";
 
 	string para_mesaj = "0";
 	double bakiye_deger = 0;
@@ -112,6 +112,7 @@ public:
 	void hesap_bilgi_gonder(int);
 	void vektor_ekle();
 	void veridondur();
+	void kayitbilgi();
 
 	bool isEmpty(ifstream& pFile)
 	{

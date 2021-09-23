@@ -155,7 +155,7 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 	int i;
 	if (hesapnumara > Hesaplar.size())
 	{
-		mesaj3 = "0";
+		kontrol_mesaj = "0";
 	}
 
 	for (i = 0; i < Hesaplar.size(); i++)
@@ -165,13 +165,13 @@ void MusteriHesap::Hesap_Kontrol(int hesapnumara, string kullanicisifre)
 			if (Hesaplar[i].get_sifre() == kullanicisifre)
 			{
 				Veri_guncelle();
-				mesaj3 = "1";
-				kullanicisifre = mesaj3;
+				kontrol_mesaj = "1";
+				kullanicisifre = kontrol_mesaj;
 				kontrol = false;
 			}
 			else
 			{
-				mesaj3 = "0";
+				kontrol_mesaj = "0";
 			}
 		}
 	}
@@ -241,6 +241,10 @@ void MusteriHesap::Veri_guncelle()
 	}
 }
 
+void MusteriHesap::kayitbilgi()
+{
+	cout << "Sistemdeki hesap sayisi : " << Hesaplar.size() << endl;
+}
 
 
 void MusteriHesap::vektor_ekle()

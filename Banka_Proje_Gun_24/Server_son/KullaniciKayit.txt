@@ -2,21 +2,21 @@ Albank
 Oguz
 ATAK
 Oguz123
-8011.6
+10055.2
 1
 
 Albank
 Ahmet
 Kerim
 kerim26
-65000
+70045
 2
 
 Albank
 Merve
 DEMIR
 Merve16
-19041
+19641
 3
 
 CBank
@@ -86,6 +86,6 @@ RedBANK
 Ersan
 GUL
 s26
-20094.4
+17998.4
 13
 
