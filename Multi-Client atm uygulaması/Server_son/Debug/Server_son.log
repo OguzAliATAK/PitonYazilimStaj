@@ -1,0 +1,3 @@
+﻿  Server_son.cpp
+C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Server_son.cpp(250,1): warning C4326: 'main' öğesinin dönüş türü 'int' olmalıdır, 'void' değil
+  Server_son.vcxproj -> C:\Users\oalia\Desktop\Banka_Proje_Gun_23\Server_son\Debug\Server_son.exe
