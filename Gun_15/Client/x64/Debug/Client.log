@@ -1,8 +1,0 @@
-﻿  Musteri.cpp
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(63,84): warning C4267: 'bağımsız değişken': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(72,81): warning C4267: 'bağımsız değişken': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(76,79): warning C4267: 'bağımsız değişken': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(89,92): warning C4267: 'bağımsız değişken': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(55,6): warning C4101: 'hesapno': yerel değişken başvurusu kaldırıldı
-C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\Musteri.cpp(53,7): warning C4101: 'bufhesap': yerel değişken başvurusu kaldırıldı
-  Client.vcxproj -> C:\Users\oalia\Desktop\staj\Gun_12\Gun_12_Deneme\Client\x64\Debug\Client.exe
