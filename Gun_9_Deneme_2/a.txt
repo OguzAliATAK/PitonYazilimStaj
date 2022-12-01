@@ -1,6 +1,0 @@
-1 Para_yatir 650
-1 Para_cek 500
-
-0 Para_yatir 15
-
-3 Para_cek 500
